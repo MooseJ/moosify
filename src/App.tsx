@@ -7,7 +7,7 @@ import {
 import Callback from 'Callback';
 import { ProvideAuth } from 'auth/auth';
 import Login from 'Login';
-import Playback from 'Playback';
+import Playback from 'components/playback';
 
 function App() {
   return (

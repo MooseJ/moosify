@@ -1,8 +1,14 @@
 import { useAuth } from "auth/auth";
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import SpotifyWebApi from 'spotify-web-api-js';
-import { FaBackward, FaForward, FaPlay, FaPause } from "react-icons/fa";
 import { millisToMinutesAndSeconds } from "utils/timeFormatter";
+import { 
+  AlbumCoverImage, 
+  AlbumCoverImageContainer, 
+  PlaybackContainer 
+} from 'components/playback/style';
+import PlaybackControls from "components/playback-controls";
+
 
 const Playback = () => {
   const auth = useAuth();
@@ -43,37 +49,23 @@ const Playback = () => {
   const isPlaying = playback.is_playing;
   const songDuration = playback.item.duration_ms;
   const songProgress = playback.progress_ms
-  const imageUrl = playback.item.album.images[1].url
-  
-  return (
-    <div style={{margin: 'auto', width: '50%', marginTop: '10%', textAlign: 'center'}}>
-      <h2>{song}</h2>
-      <h3>{artist }</h3>
+  const imageUrl = playback.item.album.images[0].url
+  const imageHeight = playback.item.album.images[0].height;
+  const imageWidth = playback.item.album.images[0].width;
 
-      <img src={imageUrl} alt="album art"/>
+  return (
+    <PlaybackContainer>
+      <h1>{song}</h1>
+      <h2>{artist }</h2>
+
+      <AlbumCoverImageContainer height={imageHeight!} width={imageWidth!}>
+        <AlbumCoverImage  height={imageHeight!} width={imageWidth!} src={imageUrl} alt="album art"/>
+      </AlbumCoverImageContainer>
 
       {songProgress && <h2>{millisToMinutesAndSeconds(songProgress)} / {millisToMinutesAndSeconds(songDuration)} </h2>}
-
-      {/* Controls */}
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        <button 
-          style={{margin: '10px', padding: '10px'}} 
-          onClick={() => {api.skipToPrevious()}}
-        >
-          <FaBackward/>
-        </button>
-        
-        {!isPlaying && <button style={{margin: '10px', padding: '10px'}}  onClick={() => {api.play()}}><FaPlay/></button> }
-        {isPlaying && <button style={{margin: '10px', padding: '10px'}}  onClick={() => {api.pause()}}><FaPause/></button> }
-        
-        <button 
-          style={{margin: '10px', padding: '10px'}}  
-          onClick={() => {api.skipToNext()}}
-        >
-          <FaForward/>
-        </button>
-      </div>
-    </div>
+      
+      <PlaybackControls isPlaying={isPlaying}/>
+    </PlaybackContainer>
   )
 }
 
