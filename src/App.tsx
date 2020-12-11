@@ -4,9 +4,9 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Callback from 'Callback';
-import { ProvideAuth } from 'auth/auth';
-import Login from 'Login';
+import Callback from 'components/callback';
+import { ProvideAuth } from 'contexts/auth';
+import Login from 'components/login';
 import Playback from 'components/playback';
 
 function App() {

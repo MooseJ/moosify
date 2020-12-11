@@ -1,13 +1,5 @@
-const baseUrl = "https://accounts.spotify.com/authorize";
-const scope = [
-  "user-read-private",
-  "user-read-email",
-  "user-read-playback-state",
-  "user-modify-playback-state"
-]
-const clientId = "f10cc188323645a1ab61b8558a83027a"
-const redirectUri = "http://localhost:3000/callback"
-const responseType = "token"
+import { baseAuthorizationUrl, clientId, redirectUri, responseType, scope } from "api/constants";
+
 
 const generateAndStoreRandomState = () => {
   const state = (Math.random() * 999999).toFixed(0).toString();
@@ -27,5 +19,5 @@ export const buildQueryData = () => ({
 
 export const getLoginUri = () => {
   const searchParams = new URLSearchParams(buildQueryData());
-  return `${baseUrl}?${searchParams}`
+  return `${baseAuthorizationUrl}?${searchParams}`
 };

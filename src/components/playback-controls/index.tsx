@@ -1,4 +1,4 @@
-import { useAuth } from "auth/auth";
+import { useAuth } from "contexts/auth";
 import React, { useEffect, useMemo } from "react";
 import SpotifyWebApi from 'spotify-web-api-js';
 import { FaBackward, FaForward, FaPlay, FaPause } from "react-icons/fa";
