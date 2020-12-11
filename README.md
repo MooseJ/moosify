@@ -1,7 +1,7 @@
 # Moosify [WIP]
 Control your Spotify playback 
 
-<img src="https://github.com/MooseJ/mosify/blob/main/screenshot/snake.png" width="500" height="700" />
+<img src="https://github.com/MooseJ/moosify/blob/main/screenshot/glassanimals.png" width="500" height="700" />
 
 
 ### `yarn start`
