@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getLoginUri } from "utils/auth";
+import { getLoginUri } from "api/auth";
 
 type Auth = {
   accessToken: string,

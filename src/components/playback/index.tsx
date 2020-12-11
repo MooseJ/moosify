@@ -1,4 +1,4 @@
-import { useAuth } from "auth/auth";
+import { useAuth } from "contexts/auth";
 import React, { useEffect, useMemo, useState } from "react";
 import SpotifyWebApi from 'spotify-web-api-js';
 import { millisToMinutesAndSeconds } from "utils/timeFormatter";
@@ -44,6 +44,10 @@ const Playback = () => {
     return null;
   }
 
+  // TODO: definitely do something with this
+  // TODO: also handle the case when music is not playing better
+  // TODO: decrease delay on actions (skipping, pausing)
+  // TODO: handle values that can be undefined more gracefully
   const song = playback.item.name
   const artist = playback.item.artists.map(a => a.name).join(', ')
   const isPlaying = playback.is_playing;
@@ -63,7 +67,7 @@ const Playback = () => {
       </AlbumCoverImageContainer>
 
       {songProgress && <h2>{millisToMinutesAndSeconds(songProgress)} / {millisToMinutesAndSeconds(songDuration)} </h2>}
-      
+
       <PlaybackControls isPlaying={isPlaying}/>
     </PlaybackContainer>
   )
