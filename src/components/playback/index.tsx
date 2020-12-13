@@ -5,7 +5,10 @@ import { millisToMinutesAndSeconds } from "utils/timeFormatter";
 import { 
   AlbumCoverImage, 
   AlbumCoverImageContainer, 
-  PlaybackContainer 
+  PlaybackContainer,
+  Title, 
+  Artist,
+  PlaybackTime
 } from 'components/playback/style';
 import PlaybackControls from "components/playback-controls";
 
@@ -59,14 +62,14 @@ const Playback = () => {
 
   return (
     <PlaybackContainer>
-      <h1>{song}</h1>
-      <h2>{artist }</h2>
+      <Title>{song}</Title>
+      <Artist>{artist }</Artist>
 
       <AlbumCoverImageContainer height={imageHeight!} width={imageWidth!}>
         <AlbumCoverImage  height={imageHeight!} width={imageWidth!} src={imageUrl} alt="album art"/>
       </AlbumCoverImageContainer>
 
-      {songProgress && <h2>{millisToMinutesAndSeconds(songProgress)} / {millisToMinutesAndSeconds(songDuration)} </h2>}
+      {songProgress && <PlaybackTime>{millisToMinutesAndSeconds(songProgress)} / {millisToMinutesAndSeconds(songDuration)} </PlaybackTime>}
 
       <PlaybackControls isPlaying={isPlaying}/>
     </PlaybackContainer>
