@@ -7,5 +7,7 @@ export const scope = [
   "user-modify-playback-state"
 ]
 export const clientId = "f10cc188323645a1ab61b8558a83027a"
-export const redirectUri = "http://localhost:3000/callback" //TODO: change this before deploying
+export const redirectUri = window.location.href.includes("localhost") 
+  ? "http://localhost:3000/callback" 
+  : "https://moosify-spotify.herokuapp.com/callback"
 export const responseType = "token"
