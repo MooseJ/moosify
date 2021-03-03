@@ -9,5 +9,5 @@ export const scope = [
 export const clientId = "f10cc188323645a1ab61b8558a83027a"
 export const redirectUri = window.location.href.includes("localhost") 
   ? "http://localhost:3000/callback" 
-  : "https://moosify-spotify.herokuapp.com/callback"
+  : `${window.origin}/callback`
 export const responseType = "token"
